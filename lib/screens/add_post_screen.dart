@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:instagram_flutter/models/user.dart';
 import 'package:instagram_flutter/providers/user_provider.dart';
 import 'package:instagram_flutter/resources/firestore_methods.dart';
 import 'package:instagram_flutter/utils/colors.dart';
@@ -113,6 +114,7 @@ class _AppPostScreenState extends State<AppPostScreen> {
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
+    User user = userProvider.getUser;
     return _file == null
         ? Center(
             child: IconButton(
@@ -132,9 +134,10 @@ class _AppPostScreenState extends State<AppPostScreen> {
               actions: [
                 TextButton(
                   onPressed: () => postImage(
-                      userProvider.getUser.uid,
-                      userProvider.getUser.username,
-                      userProvider.getUser.photoUrl),
+                    user.uid,
+                    user.username,
+                    user.photoUrl,
+                  ),
                   child: const Text(
                     ('Post'),
                     style: TextStyle(
