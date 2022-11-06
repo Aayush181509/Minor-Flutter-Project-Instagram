@@ -46,8 +46,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
-            );
+                // child: CircularProgressIndicator(),
+                );
           }
           return ListView.builder(
             itemCount: (snapshot.data! as dynamic).docs.length,
